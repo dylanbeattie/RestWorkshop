@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Web.Hosting;
 using Herobook.Data.Entities;
 using Newtonsoft.Json;
@@ -13,7 +12,7 @@ namespace Herobook.Data {
         private static readonly IList<Profile> profiles;
         private static readonly IList<Friendship> friendships;
 
-        private static JsonSerializerSettings settings = new JsonSerializerSettings {
+        private static readonly JsonSerializerSettings settings = new JsonSerializerSettings {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Formatting = Formatting.Indented
         };
@@ -34,6 +33,14 @@ namespace Herobook.Data {
             var target = FindProfile(username);
             profiles.Remove(target);
             Save();
+        }
+
+        public Profile UpdateProfile(Profile profile) {
+            var target = FindProfile(profile.Username);
+            target.Username = profile.Username;
+            target.Name = profile.Name;
+            Save();
+            return target;
         }
 
         public int CountProfiles() {

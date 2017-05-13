@@ -130,11 +130,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Explorer\ajaxload.gif" />
+    <Content Include="Explorer\explorer.css" />
+    <Content Include="Explorer\explorer.html" />
+    <Content Include="Explorer\explorer.js" />
+    <Content Include="Explorer\spinner.gif" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BrowserJsonFormatter.cs" />
+    <Compile Include="Helpers\Hal.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -159,6 +165,7 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="App_Data\friendships.json" />
     <Content Include="App_Data\profiles.json" />
+    <Content Include="Schemas\profile.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

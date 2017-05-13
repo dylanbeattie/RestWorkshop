@@ -5,7 +5,6 @@ using Newtonsoft.Json.Serialization;
 namespace Herobook {
     public static class WebApiConfig {
         public static void Register(HttpConfiguration config) {
-
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             var settings = jsonFormatter.SerializerSettings;

@@ -1,17 +1,5 @@
 [
   {
-    "name": "Captain Lea Corbin",
-    "username": "4d"
-  },
-  {
-    "name": "Steve Austin",
-    "username": "6milliondollarman"
-  },
-  {
-    "name": "Linda Lee",
-    "username": "Supergirl"
-  },
-  {
     "name": "Arnold Etchison",
     "username": "abattoir"
   },
@@ -966,5 +954,21 @@
   {
     "name": "Sheena Macgyver",
     "username": "owlwoman"
+  },
+  {
+    "name": null,
+    "username": null
+  },
+  {
+    "name": "Eric Wimp",
+    "username": "bananaman"
+  },
+  {
+    "name": "Erik Draven",
+    "username": "the_crow"
+  },
+  {
+    "name": "Hans Gruber",
+    "username": "gruber"
   }
 ]
