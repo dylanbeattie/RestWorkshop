@@ -1,962 +1,970 @@
-﻿[
+[
   {
-    "username": "4d",
-    "name": "Captain Lea Corbin"
+    "name": "Captain Lea Corbin",
+    "username": "4d"
   },
   {
-    "username": "6milliondollarman",
-    "name": "Steve Austin"
+    "name": "Steve Austin",
+    "username": "6milliondollarman"
   },
   {
-    "username": "Supergirl",
-    "name": "Linda Lee"
+    "name": "Linda Lee",
+    "username": "Supergirl"
   },
   {
-    "username": "abattoir",
-    "name": "Arnold Etchison"
+    "name": "Arnold Etchison",
+    "username": "abattoir"
   },
   {
-    "username": "abel",
-    "name": "Abel"
+    "name": "Abel",
+    "username": "abel"
   },
   {
-    "username": "access",
-    "name": "Axel Asher"
+    "name": "Axel Asher",
+    "username": "access"
   },
   {
-    "username": "ace",
-    "name": "Female Android"
+    "name": "Female Android",
+    "username": "ace"
   },
   {
-    "username": "ahwehotah",
-    "name": "Max Crandall"
+    "name": "Max Crandall",
+    "username": "ahwehotah"
   },
   {
-    "username": "airwave",
-    "name": "Larry Jordan"
+    "name": "Larry Jordan",
+    "username": "airwave"
   },
   {
-    "username": "alchemist",
-    "name": "Jan Arrah"
+    "name": "Jan Arrah",
+    "username": "alchemist"
   },
   {
-    "username": "aliasthespider",
-    "name": "Tom Ludlow Hallaway"
+    "name": "Marcus Aelius",
+    "username": "alphacenturion"
   },
   {
-    "username": "alphacenturion",
-    "name": "Marcus Aelius"
+    "name": "Will Everett",
+    "username": "amazingman"
   },
   {
-    "username": "amazingman",
-    "name": "Will Everett"
+    "name": "Tex Thompson",
+    "username": "americommando"
   },
   {
-    "username": "amazo",
-    "name": "An android"
+    "name": "Bartholomew \"Bart\" Gallows",
+    "username": "americop"
   },
   {
-    "username": "americommando",
-    "name": "Tex Thompson"
+    "name": "Tike Alicar",
+    "username": "anarchist"
   },
   {
-    "username": "americop",
-    "name": "Bartholomew \"Bart\" Gallows"
+    "name": "Lonnie Machin",
+    "username": "anarky"
   },
   {
-    "username": "anarchist",
-    "name": "Tike Alicar"
+    "name": "Angelo Bend",
+    "username": "angleman"
   },
   {
-    "username": "anarky",
-    "name": "Lonnie Machin"
+    "name": "Bernhard \"Buddy\" Baker",
+    "username": "animalman"
   },
   {
-    "username": "angleman",
-    "name": "Angelo Bend"
+    "name": "Victor Borkowski",
+    "username": "anole"
   },
   {
-    "username": "animalman",
-    "name": "Bernhard \"Buddy\" Baker"
+    "name": "Tula",
+    "username": "aquagirl"
   },
   {
-    "username": "anole",
-    "name": "Victor Borkowski"
+    "name": "Garth",
+    "username": "aqualad"
   },
   {
-    "username": "aquagirl",
-    "name": "Tula"
+    "name": "Orin Curry",
+    "username": "aquaman"
   },
   {
-    "username": "aqualad",
-    "name": "Garth"
+    "name": "Toni Monetti",
+    "username": "argent"
   },
   {
-    "username": "aquaman",
-    "name": "Orin Curry"
+    "name": "Jack Keaton",
+    "username": "armor"
   },
   {
-    "username": "argent",
-    "name": "Toni Monetti"
+    "name": "Cissie King-Jones",
+    "username": "arrowette"
   },
   {
-    "username": "armor",
-    "name": "Jack Keaton"
+    "name": "Roy Harper",
+    "username": "arsenal"
   },
   {
-    "username": "arrowette",
-    "name": "Cissie King-Jones"
+    "name": "Jim Randall",
+    "username": "atlas"
   },
   {
-    "username": "arsenal",
-    "name": "Roy Harper"
+    "name": "Gardner Grayle",
+    "username": "atomicknight"
   },
   {
-    "username": "atlas",
-    "name": "Jim Randall"
+    "name": "Adam Mann",
+    "username": "atomicman"
   },
   {
-    "username": "atomicknight",
-    "name": "Gardner Grayle"
+    "name": "Dr.Noah Talbot",
+    "username": "atomicsub"
   },
   {
-    "username": "atomicman",
-    "name": "Adam Mann"
+    "name": "William Burns",
+    "username": "atomicthunderbolt"
   },
   {
-    "username": "atomicsub",
-    "name": "Dr.Noah Talbot"
+    "name": "Al Rothstein",
+    "username": "atomsmasher"
   },
   {
-    "username": "atomicthunderbolt",
-    "name": "William Burns"
+    "name": "Jean Paul Valley",
+    "username": "azrael"
   },
   {
-    "username": "atomsmasher",
-    "name": "Al Rothstein"
+    "name": "Uno Falconer",
+    "username": "aztek"
   },
   {
-    "username": "azrael",
-    "name": "Jean Paul Valley"
+    "name": "Greg Mattingly",
+    "username": "backhand"
   },
   {
-    "username": "aztek",
-    "name": "Uno Falconer"
+    "name": "Marc Slayton",
+    "username": "backlash"
   },
   {
-    "username": "backhand",
-    "name": "Greg Mattingly"
+    "name": "Catherine Bell",
+    "username": "badkitty"
   },
   {
-    "username": "backlash",
-    "name": "Marc Slayton"
+    "name": "Thomas John McCall",
+    "username": "badrock"
   },
   {
-    "username": "badkitty",
-    "name": "Catherine Bell"
+    "name": "Suzanne Melotti",
+    "username": "bagabond"
   },
   {
-    "username": "badrock",
-    "name": "Thomas John McCall"
+    "name": "Cassandra Lane",
+    "username": "ballistic"
   },
   {
-    "username": "bagabond",
-    "name": "Suzanne Melotti"
+    "name": "Sean Cassidy",
+    "username": "banshee"
   },
   {
-    "username": "ballistic",
-    "name": "Cassandra Lane"
+    "name": "Barbara Gordon",
+    "username": "batgirl"
   },
   {
-    "username": "banshee",
-    "name": "Sean Cassidy"
+    "name": "Bruce Wayne",
+    "username": "batman"
   },
   {
-    "username": "batgirl",
-    "name": "Barbara Gordon"
+    "name": "Jackson King",
+    "username": "battalion"
   },
   {
-    "username": "batman",
-    "name": "Bruce Wayne"
+    "name": "Unknown",
+    "username": "batteringram"
   },
   {
-    "username": "battalion",
-    "name": "Jackson King"
+    "name": "Kathy Kane",
+    "username": "batwoman"
   },
   {
-    "username": "batteringram",
-    "name": "Unknown"
+    "name": "Henry \"Hank\" P. McCoy",
+    "username": "beast"
   },
   {
-    "username": "batwoman",
-    "name": "Kathy Kane"
+    "name": "Garfield Logan",
+    "username": "beastboy"
   },
   {
-    "username": "beast",
-    "name": "Henry \"Hank\" P. McCoy"
+    "name": "Barda Free",
+    "username": "bigbarda"
   },
   {
-    "username": "beastboy",
-    "name": "Garfield Logan"
+    "name": "Percy Pilbeam",
+    "username": "bige"
   },
   {
-    "username": "bigbarda",
-    "name": "Barda Free"
+    "name": "Teth-Adam",
+    "username": "blackadam"
   },
   {
-    "username": "bige",
-    "name": "Percy Pilbeam"
+    "name": "Dinah Lance",
+    "username": "blackcanary"
   },
   {
-    "username": "blackadam",
-    "name": "Teth-Adam"
+    "name": "Richard Grey Jr.",
+    "username": "blackcondor"
   },
   {
-    "username": "blackcanary",
-    "name": "Dinah Lance"
+    "name": "Janos Prohaska",
+    "username": "blackhawk"
   },
   {
-    "username": "blackcondor",
-    "name": "Richard Grey Jr."
+    "name": "Jefferson Pierce",
+    "username": "blacklightning"
   },
   {
-    "username": "blackhawk",
-    "name": "Janos Prohaska"
+    "name": "Roman Sionis",
+    "username": "blackmask"
   },
   {
-    "username": "blacklightning",
-    "name": "Jefferson Pierce"
+    "name": "Sgt. Willie Walker",
+    "username": "blackracer"
   },
   {
-    "username": "blackmask",
-    "name": "Roman Sionis"
+    "name": "Johnny LaMonica",
+    "username": "blackspider"
   },
   {
-    "username": "blackracer",
-    "name": "Sgt. Willie Walker"
+    "name": "Natalia Allanovna Romanova (Shostakova)",
+    "username": "blackwidow"
   },
   {
-    "username": "blackspider",
-    "name": "Johnny LaMonica"
+    "name": "Natasha Romanoff",
+    "username": "blackwidow"
   },
   {
-    "username": "blackwidow",
-    "name": "Natalia Allanovna Romanova (Shostakova)"
+    "name": "Dan Garrett",
+    "username": "bluebeetle"
   },
   {
-    "username": "blackwidow",
-    "name": "Natasha Romanoff"
+    "name": "Daniel Patrick Cassidy",
+    "username": "bluedevil"
   },
   {
-    "username": "bluebeetle",
-    "name": "Dan Garrett"
+    "name": "Jay Abrams",
+    "username": "bluejay"
   },
   {
-    "username": "bluedevil",
-    "name": "Daniel Patrick Cassidy"
+    "name": "Michael Jon Carter",
+    "username": "boostergold"
   },
   {
-    "username": "bluejay",
-    "name": "Jay Abrams"
+    "name": "Henry King Sr.",
+    "username": "brainwavebrainwave"
   },
   {
-    "username": "boostergold",
-    "name": "Michael Jon Carter"
+    "name": "Ben Turner",
+    "username": "bronzetiger"
   },
   {
-    "username": "brainwavebrainwave",
-    "name": "Henry King Sr."
+    "name": "Guillermo Barrera",
+    "username": "brutale"
   },
   {
-    "username": "bronzetiger",
-    "name": "Ben Turner"
+    "name": "Susan Kent-Barr",
+    "username": "bulletgirl"
   },
   {
-    "username": "brutale",
-    "name": "Guillermo Barrera"
+    "name": "Jim Barr",
+    "username": "bulletman"
   },
   {
-    "username": "bulletgirl",
-    "name": "Susan Kent-Barr"
+    "name": "Karen Beecher-Duncan",
+    "username": "bumblebee"
   },
   {
-    "username": "bulletman",
-    "name": "Jim Barr"
+    "name": "Ryuko Orsono",
+    "username": "bushido"
   },
   {
-    "username": "bumblebee",
-    "name": "Karen Beecher-Duncan"
+    "name": "Cain",
+    "username": "cain"
   },
   {
-    "username": "bushido",
-    "name": "Ryuko Orsono"
+    "name": "Steven Rogers",
+    "username": "captainamerica"
   },
   {
-    "username": "cain",
-    "name": "Cain"
+    "name": "Captain Allen Adam",
+    "username": "captainatom"
   },
   {
-    "username": "cap",
-    "name": "Steve Rogers"
+    "name": "Brian Braddock",
+    "username": "captainbritain"
   },
   {
-    "username": "captainamerica",
-    "name": "Steven Rogers"
+    "name": "Daniel Eaton",
+    "username": "captaincanada"
   },
   {
-    "username": "captainatom",
-    "name": "Captain Allen Adam"
+    "name": "Tom Evans",
+    "username": "captaincanuck"
   },
   {
-    "username": "captainbritain",
-    "name": "Brian Braddock"
+    "name": "David Semple",
+    "username": "captaincanuck00s"
   },
   {
-    "username": "captaincanada",
-    "name": "Daniel Eaton"
+    "name": "Darren Oak",
+    "username": "captaincanuck90s"
   },
   {
-    "username": "captaincanuck",
-    "name": "Tom Evans"
+    "name": "Adam Blake",
+    "username": "captaincomet"
   },
   {
-    "username": "captaincanuck00s",
-    "name": "David Semple"
+    "name": "Flash Dale",
+    "username": "captainconquest"
   },
   {
-    "username": "captaincanuck90s",
-    "name": "Darren Oak"
+    "name": "Tom Townsend",
+    "username": "captainflag"
   },
   {
-    "username": "captaincomet",
-    "name": "Adam Blake"
+    "name": "Keith Spencer",
+    "username": "captainflash"
   },
   {
-    "username": "captainconquest",
-    "name": "Flash Dale"
+    "name": "Don Wright",
+    "username": "captainfreedom"
   },
   {
-    "username": "captainflag",
-    "name": "Tom Townsend"
+    "name": "Billy Batson",
+    "username": "captainmarvel"
   },
   {
-    "username": "captainflash",
-    "name": "Keith Spencer"
+    "name": "Freddy Freeman",
+    "username": "captainmarveljr"
   },
   {
-    "username": "captainfreedom",
-    "name": "Don Wright"
+    "name": "Lance Gallant",
+    "username": "captaintriumph"
   },
   {
-    "username": "captainmarvel",
-    "name": "Billy Batson"
+    "name": "Carrie Kelley",
+    "username": "catgirl"
   },
   {
-    "username": "captainmarveljr",
-    "name": "Freddy Freeman"
+    "name": "Selina Kyle",
+    "username": "catwoman"
   },
   {
-    "username": "captaintriumph",
-    "name": "Lance Gallant"
+    "name": "Drury Walker",
+    "username": "charaxes"
   },
   {
-    "username": "catgirl",
-    "name": "Carrie Kelley"
+    "name": "Niles Caulder",
+    "username": "chief"
   },
   {
-    "username": "catwoman",
-    "name": "Selina Kyle"
+    "name": "Katherine Manser",
+    "username": "cinnamon"
   },
   {
-    "username": "charaxes",
-    "name": "Drury Walker"
+    "name": "Basil Karlo",
+    "username": "clayface"
   },
   {
-    "username": "chief",
-    "name": "Niles Caulder"
+    "name": "Han",
+    "username": "collectiveman"
   },
   {
-    "username": "cinnamon",
-    "name": "Katherine Manser"
+    "name": "Piotr Nikolaievitch Rasputin",
+    "username": "colossus"
   },
   {
-    "username": "clayface",
-    "name": "Basil Karlo"
+    "name": "Henry \"Hank\" Heywood I",
+    "username": "commandersteel"
   },
   {
-    "username": "collectiveman",
-    "name": "Han"
+    "name": "James Sharp",
+    "username": "coronary"
   },
   {
-    "username": "colossus",
-    "name": "Piotr Nikolaievitch Rasputin"
+    "name": "Jack Ryder",
+    "username": "creeper"
   },
   {
-    "username": "commandersteel",
-    "name": "Henry \"Hank\" Heywood I"
+    "name": "Lee Travis",
+    "username": "crimsonavenger"
   },
   {
-    "username": "coronary",
-    "name": "James Sharp"
+    "name": "Vivian D'Aramis",
+    "username": "crimsonfox"
   },
   {
-    "username": "creeper",
-    "name": "Jack Ryder"
+    "name": "Victor Stone",
+    "username": "cyborg"
   },
   {
-    "username": "crimsonavenger",
-    "name": "Lee Travis"
+    "name": "Scott Summers",
+    "username": "cyclops"
   },
   {
-    "username": "crimsonfox",
-    "name": "Vivian D'Aramis"
+    "name": "Grant Emerson",
+    "username": "damage"
   },
   {
-    "username": "cyborg",
-    "name": "Victor Stone"
+    "name": "Matthew Michael Murdock",
+    "username": "daredevil"
   },
   {
-    "username": "cyclops",
-    "name": "Scott Summers"
+    "name": "Boston Brand",
+    "username": "deadman"
   },
   {
-    "username": "damage",
-    "name": "Grant Emerson"
+    "name": "Floyd Lawton",
+    "username": "deadshot"
   },
   {
-    "username": "daredevil",
-    "name": "Matthew Michael Murdock"
+    "name": "",
+    "username": "deathstroke"
   },
   {
-    "username": "deadman",
-    "name": "Boston Brand"
+    "name": "Victor Von Doom",
+    "username": "doctordoom"
   },
   {
-    "username": "deadshot",
-    "name": "Floyd Lawton"
+    "name": "Anthony Ludgate Druid",
+    "username": "doctordruid"
   },
   {
-    "username": "deathstroke",
-    "name": ""
+    "name": "Kent Nelson",
+    "username": "doctorfate"
   },
   {
-    "username": "doctordoom",
-    "name": "Victor Von Doom"
+    "name": "Dr. Kimiyo Hoshi",
+    "username": "doctorlight"
   },
   {
-    "username": "doctordruid",
-    "name": "Anthony Ludgate Druid"
+    "name": "Jonathan Osterman",
+    "username": "doctormanhattan"
   },
   {
-    "username": "doctorfate",
-    "name": "Kent Nelson"
+    "name": "Dr. Beth Chapel",
+    "username": "doctormidnight"
   },
   {
-    "username": "doctorlight",
-    "name": "Dr. Kimiyo Hoshi"
+    "name": "Dr. Charles McNider",
+    "username": "doctormidnite"
   },
   {
-    "username": "doctormanhattan",
-    "name": "Jonathan Osterman"
+    "name": "Nommo",
+    "username": "doctormist"
   },
   {
-    "username": "doctormidnight",
-    "name": "Dr. Beth Chapel"
+    "name": "Richard Occult",
+    "username": "doctoroccult"
   },
   {
-    "username": "doctormidnite",
-    "name": "Dr. Charles McNider"
+    "name": "Martha Roberts",
+    "username": "dollgirl"
   },
   {
-    "username": "doctormist",
-    "name": "Nommo"
+    "name": "Darrell Dane",
+    "username": "dollman"
   },
   {
-    "username": "doctoroccult",
-    "name": "Richard Occult"
+    "name": "DeMarr Davis",
+    "username": "doorman"
   },
   {
-    "username": "dollgirl",
-    "name": "Martha Roberts"
+    "name": "Don Hall",
+    "username": "dove"
   },
   {
-    "username": "dollman",
-    "name": "Darrell Dane"
+    "name": "Daniel Dunbar",
+    "username": "dynamite"
   },
   {
-    "username": "doorman",
-    "name": "DeMarr Davis"
+    "name": "Rita Farr",
+    "username": "elastigirl"
   },
   {
-    "username": "dove",
-    "name": "Don Hall"
+    "name": "Ralph Dibny",
+    "username": "elongatedman"
   },
   {
-    "username": "dynamite",
-    "name": "Daniel Dunbar"
+    "name": "Emma Grace Frost",
+    "username": "emmafrost"
   },
   {
-    "username": "elastigirl",
-    "name": "Rita Farr"
+    "name": "Anita Fite",
+    "username": "empress"
   },
   {
-    "username": "elongatedman",
-    "name": "Ralph Dibny"
+    "name": "David Connor",
+    "username": "eradicator"
   },
   {
-    "username": "emmafrost",
-    "name": "Emma Grace Frost"
+    "name": "Jason Blood",
+    "username": "etriganthedemon"
   },
   {
-    "username": "empress",
-    "name": "Anita Fite"
+    "name": "Jared Stevens",
+    "username": "fate"
   },
   {
-    "username": "eradicator",
-    "name": "David Connor"
+    "name": "Beatriz DaCosta",
+    "username": "fire"
   },
   {
-    "username": "etriganthedemon",
-    "name": "Jason Blood"
+    "name": "Rod Reilly",
+    "username": "firebrand"
   },
   {
-    "username": "fate",
-    "name": "Jared Stevens"
+    "name": "Lorraine Reilly",
+    "username": "firehawk"
   },
   {
-    "username": "fire",
-    "name": "Beatriz DaCosta"
+    "name": "Ronald \"Ronnie\" Raymond",
+    "username": "firestorm"
   },
   {
-    "username": "firebrand",
-    "name": "Rod Reilly"
+    "name": "Bette Kane",
+    "username": "flamebird"
   },
   {
-    "username": "firehawk",
-    "name": "Lorraine Reilly"
+    "name": "Helena Kosmatos",
+    "username": "fury"
   },
   {
-    "username": "firestorm",
-    "name": "Ronald \"Ronnie\" Raymond"
+    "name": "",
+    "username": "gabriel"
   },
   {
-    "username": "flamebird",
-    "name": "Bette Kane"
+    "name": "Galan",
+    "username": "galactus"
   },
   {
-    "username": "fury",
-    "name": "Helena Kosmatos"
+    "name": "Remy LeBeau",
+    "username": "gambit"
   },
   {
-    "username": "gabriel",
-    "name": ""
+    "name": "Joseph Jones",
+    "username": "generalglory"
   },
   {
-    "username": "galactus",
-    "name": "Galan"
+    "name": "Dru-Zod",
+    "username": "generalzod"
   },
   {
-    "username": "gambit",
-    "name": "Remy LeBeau"
+    "name": "Brion Markov",
+    "username": "geoforce"
   },
   {
-    "username": "generalglory",
-    "name": "Joseph Jones"
+    "name": "Major Dan Stone",
+    "username": "glob"
   },
   {
-    "username": "generalzod",
-    "name": "Dru-Zod"
+    "name": "Mike Magnus",
+    "username": "gold"
   },
   {
-    "username": "geoforce",
-    "name": "Brion Markov"
+    "name": "Charley Parker",
+    "username": "goldeneagle"
   },
   {
-    "username": "glob",
-    "name": "Major Dan Stone"
+    "name": "Grace Choi",
+    "username": "grace"
   },
   {
-    "username": "gold",
-    "name": "Mike Magnus"
+    "name": "Oliver Queen",
+    "username": "greenarrow"
   },
   {
-    "username": "goldeneagle",
-    "name": "Charley Parker"
+    "name": "Phillip Urich",
+    "username": "greengoblin"
   },
   {
-    "username": "grace",
-    "name": "Grace Choi"
+    "name": "Alan Scott",
+    "username": "greenlantern"
   },
   {
-    "username": "greenarrow",
-    "name": "Oliver Queen"
+    "name": "Jim Harper",
+    "username": "guardian"
   },
   {
-    "username": "greengoblin",
-    "name": "Phillip Urich"
+    "name": "Cindy Reynolds",
+    "username": "gypsy"
   },
   {
-    "username": "greenlantern",
-    "name": "Alan Scott"
+    "name": "Scott Hanselman",
+    "username": "hanselman"
   },
   {
-    "username": "guardian",
-    "name": "Jim Harper"
+    "name": "Shiera Saunders",
+    "username": "hawkgirl"
   },
   {
-    "username": "gypsy",
-    "name": "Cindy Reynolds"
+    "name": "Carter Hall",
+    "username": "hawkman"
   },
   {
-    "username": "hanselman",
-    "name": "Scott Hanselman"
+    "name": "Bruce Banner",
+    "username": "hulk"
   },
   {
-    "username": "hawkgirl",
-    "name": "Shiera Saunders"
+    "name": "Tora Olafsdotter",
+    "username": "ice"
   },
   {
-    "username": "hawkman",
-    "name": "Carter Hall"
+    "name": "Robert \"Bobby\" Louis Drake",
+    "username": "iceman"
   },
   {
-    "username": "hulk",
-    "name": "Bruce Banner"
+    "name": "Bart Allen",
+    "username": "impulse"
   },
   {
-    "username": "ice",
-    "name": "Tora Olafsdotter"
+    "name": "Robert Bruce Banner",
+    "username": "incrediblehulk"
   },
   {
-    "username": "iceman",
-    "name": "Robert \"Bobby\" Louis Drake"
+    "name": "Kyle Rayner",
+    "username": "ion"
   },
   {
-    "username": "impulse",
-    "name": "Bart Allen"
+    "name": "Tony Stark",
+    "username": "ironman"
   },
   {
-    "username": "incrediblehulk",
-    "name": "Robert Bruce Banner"
+    "name": "Obadiah Stane",
+    "username": "ironmonger"
   },
   {
-    "username": "ion",
-    "name": "Kyle Rayner"
+    "name": "Andrea Thomas",
+    "username": "isis"
   },
   {
-    "username": "ironman",
-    "name": "Tony Stark"
+    "name": "Jenny-Lynn Hayden",
+    "username": "jade"
   },
   {
-    "username": "ironmonger",
-    "name": "Obadiah Stane"
+    "name": "Jubilation Lee",
+    "username": "jubilee"
   },
   {
-    "username": "isis",
-    "name": "Andrea Thomas"
+    "name": "Cain Marko",
+    "username": "juggernaut"
   },
   {
-    "username": "jade",
-    "name": "Jenny-Lynn Hayden"
+    "name": "Wally West",
+    "username": "kidflash"
   },
   {
-    "username": "jubilee",
-    "name": "Jubilation Lee"
+    "name": "Katherine \"Kitty\" Pryde",
+    "username": "kittypryde"
   },
   {
-    "username": "juggernaut",
-    "name": "Cain Marko"
+    "name": "Alexander Joseph \"Lex\" Luthor",
+    "username": "lexluthor"
   },
   {
-    "username": "kidflash",
-    "name": "Wally West"
+    "name": "Loki Laufeyson",
+    "username": "loki"
   },
   {
-    "username": "kittypryde",
-    "name": "Katherine \"Kitty\" Pryde"
+    "name": "Maz \"Magnus\" Eisenhardt",
+    "username": "magneto"
   },
   {
-    "username": "lexluthor",
-    "name": "Alexander Joseph \"Lex\" Luthor"
+    "name": "Robert Kirkland ‘Kirk’ Langstrom",
+    "username": "manbat"
   },
   {
-    "username": "loki",
-    "name": "Loki Laufeyson"
+    "name": "J’onn J’onzz",
+    "username": "martianmanhunter"
   },
   {
-    "username": "magneto",
-    "name": "Maz \"Magnus\" Eisenhardt"
+    "name": "Mary Batson",
+    "username": "marymarvel"
   },
   {
-    "username": "manbat",
-    "name": "Robert Kirkland ‘Kirk’ Langstrom"
+    "name": "unknown",
+    "username": "mathemaniac"
   },
   {
-    "username": "martianmanhunter",
-    "name": "J’onn J’onzz"
+    "name": "Rex Mason",
+    "username": "metamorpho"
   },
   {
-    "username": "marymarvel",
-    "name": "Mary Batson"
+    "name": "Barbara \"Bobbi\" Morse Barton",
+    "username": "mockingbird"
   },
   {
-    "username": "mathemaniac",
-    "name": "unknown"
+    "name": "Reed Richards",
+    "username": "mrfantastic"
   },
   {
-    "username": "metamorpho",
-    "name": "Rex Mason"
+    "name": "Scott Free",
+    "username": "mrmiracle"
   },
   {
-    "username": "mockingbird",
-    "name": "Barbara \"Bobbi\" Morse Barton"
+    "name": "Terry Sloane",
+    "username": "mrterrific"
   },
   {
-    "username": "mrfantastic",
-    "name": "Reed Richards"
+    "name": "James Arthur \"Jamie\" Madrox",
+    "username": "multipleman"
   },
   {
-    "username": "mrmiracle",
-    "name": "Scott Free"
+    "name": "Raven Darkholme",
+    "username": "mystique"
   },
   {
-    "username": "mrterrific",
-    "name": "Terry Sloane"
+    "name": "Namor McKenzie",
+    "username": "namorthesubmariner"
   },
   {
-    "username": "multipleman",
-    "name": "James Arthur \"Jamie\" Madrox"
+    "name": "Jane St. Ives",
+    "username": "nemesis"
   },
   {
-    "username": "mystique",
-    "name": "Raven Darkholme"
+    "name": "Kurt Wagner",
+    "username": "nightcrawler"
   },
   {
-    "username": "namorthesubmariner",
-    "name": "Namor McKenzie"
+    "name": "Hannibal Hawkes",
+    "username": "nighthawk"
   },
   {
-    "username": "nemesis",
-    "name": "Jane St. Ives"
+    "name": "Richard \"Dick\" Grayson",
+    "username": "nightwing"
   },
   {
-    "username": "nightcrawler",
-    "name": "Kurt Wagner"
+    "name": "Barbara Gordon",
+    "username": "oracle"
   },
   {
-    "username": "nighthawk",
-    "name": "Hannibal Hawkes"
+    "name": "Adrian Veidt",
+    "username": "ozymandias"
   },
   {
-    "username": "nightwing",
-    "name": "Richard \"Dick\" Grayson"
+    "name": "Hal Jordan",
+    "username": "parallax"
   },
   {
-    "username": "oracle",
-    "name": "Barbara Gordon"
+    "name": "Virginia Potts",
+    "username": "pepperpotts"
   },
   {
-    "username": "ozymandias",
-    "name": "Adrian Veidt"
+    "name": "William Robert Reilly",
+    "username": "phat"
   },
   {
-    "username": "parallax",
-    "name": "Hal Jordan"
+    "name": "Patrick \"Eel\" O’Brian",
+    "username": "plasticman"
   },
   {
-    "username": "pepperpotts",
-    "name": "Virginia Potts"
+    "name": "Kara Zor-L",
+    "username": "powergirl"
   },
   {
-    "username": "phat",
-    "name": "William Robert Reilly"
+    "name": "Charles Francis Xavier",
+    "username": "professorx"
   },
   {
-    "username": "plasticman",
-    "name": "Patrick \"Eel\" O’Brian"
+    "name": "Dr. Chen Lu",
+    "username": "radioactiveman"
   },
   {
-    "username": "powergirl",
-    "name": "Kara Zor-L"
+    "name": "Edward Nygma",
+    "username": "riddler"
   },
   {
-    "username": "professorx",
-    "name": "Charles Francis Xavier"
+    "name": "Dick Grayson",
+    "username": "robin"
   },
   {
-    "username": "radioactiveman",
-    "name": "Dr. Chen Lu"
+    "name": "Anna Marie",
+    "username": "rogue"
   },
   {
-    "username": "riddler",
-    "name": "Edward Nygma"
+    "name": "Walter Kovacs",
+    "username": "rorschach"
   },
   {
-    "username": "robin",
-    "name": "Dick Grayson"
+    "name": "Dr. Walter Langkowski",
+    "username": "sasquatch"
   },
   {
-    "username": "rogue",
-    "name": "Anna Marie"
+    "name": "Kurr",
+    "username": "savagedragon"
   },
   {
-    "username": "rorschach",
-    "name": "Walter Kovacs"
+    "name": "Molly Fitzgerald",
+    "username": "shamrock"
   },
   {
-    "username": "sasquatch",
-    "name": "Dr. Walter Langkowski"
+    "name": "Steven Harmon",
+    "username": "slapstick"
   },
   {
-    "username": "savagedragon",
-    "name": "Kurr"
+    "name": "Cyrus Gold",
+    "username": "solomongrundy"
   },
   {
-    "username": "shamrock",
-    "name": "Molly Fitzgerald"
+    "name": "Melissa Joan Gold",
+    "username": "songbird"
   },
   {
-    "username": "slapstick",
-    "name": "Steven Harmon"
+    "name": "James Brendan \"Jim\" Corrigan",
+    "username": "spectre"
   },
   {
-    "username": "solomongrundy",
-    "name": "Cyrus Gold"
+    "name": "Robert \"Robbie\" Baldwin",
+    "username": "speedball"
   },
   {
-    "username": "songbird",
-    "name": "Melissa Joan Gold"
+    "name": "Peter Parker",
+    "username": "spiderman"
   },
   {
-    "username": "spectre",
-    "name": "James Brendan \"Jim\" Corrigan"
+    "name": "William Nasland",
+    "username": "spiritof76"
   },
   {
-    "username": "speedball",
-    "name": "Robert \"Robbie\" Baldwin"
+    "name": "Courtney Whitmore",
+    "username": "stargirl"
   },
   {
-    "username": "spiderman",
-    "name": "Peter Parker"
+    "name": "Ted Knight",
+    "username": "starman"
   },
   {
-    "username": "spiritof76",
-    "name": "William Nasland"
+    "name": "Henry Heywood I",
+    "username": "steel"
   },
   {
-    "username": "stargirl",
-    "name": "Courtney Whitmore"
+    "name": "Ororo Monroe",
+    "username": "storm"
   },
   {
-    "username": "starman",
-    "name": "Ted Knight"
+    "name": "Shiro Yoshida",
+    "username": "sunfire"
   },
   {
-    "username": "steel",
-    "name": "Henry Heywood I"
+    "name": "Clark Kent/Kal-El",
+    "username": "superboy"
   },
   {
-    "username": "storm",
-    "name": "Ororo Monroe"
+    "name": "Kara Zor-El",
+    "username": "supergirl"
   },
   {
-    "username": "sunfire",
-    "name": "Shiro Yoshida"
+    "name": "Clark Kent",
+    "username": "superman"
   },
   {
-    "username": "superboy",
-    "name": "Clark Kent/Kal-El"
+    "name": "Alec Holland",
+    "username": "swampthing"
   },
   {
-    "username": "supergirl",
-    "name": "Kara Zor-El"
+    "name": "Joshua Sanders",
+    "username": "takion"
   },
   {
-    "username": "superman",
-    "name": "Clark Kent"
+    "name": "Albert \"Al\" Pratt",
+    "username": "theatom"
   },
   {
-    "username": "swampthing",
-    "name": "Alec Holland"
+    "name": "Norbert Sykes",
+    "username": "thebadger"
   },
   {
-    "username": "takion",
-    "name": "Joshua Sanders"
+    "name": "Barry Eames",
+    "username": "thebee"
   },
   {
-    "username": "theatom",
-    "name": "Albert \"Al\" Pratt"
+    "name": "Barry Allen",
+    "username": "theflash"
   },
   {
-    "username": "thebadger",
-    "name": "Norbert Sykes"
+    "name": "Jay Garrick",
+    "username": "theflash"
   },
   {
-    "username": "thebee",
-    "name": "Barry Eames"
+    "name": "Unknown",
+    "username": "thejoker"
   },
   {
-    "username": "theflash",
-    "name": "Barry Allen"
+    "name": "Oswald Cobblepot",
+    "username": "thepenguin"
   },
   {
-    "username": "theflash",
-    "name": "Jay Garrick"
+    "name": "Charles Victor Szasz",
+    "username": "thequestion"
   },
   {
-    "username": "thejoker",
-    "name": "Unknown"
+    "name": "Benjamin Grimm",
+    "username": "thing"
   },
   {
-    "username": "thepenguin",
-    "name": "Oswald Cobblepot"
+    "name": "Donna Troy",
+    "username": "troia"
   },
   {
-    "username": "thequestion",
-    "name": "Charles Victor Szasz"
+    "name": "Harvey Dent",
+    "username": "twoface"
   },
   {
-    "username": "thing",
-    "name": "Benjamin Grimm"
+    "name": "Troy Stewart",
+    "username": "tyroc"
   },
   {
-    "username": "troia",
-    "name": "Donna Troy"
+    "name": "Edith Constance Sawyer",
+    "username": "ugogirl"
   },
   {
-    "username": "twoface",
-    "name": "Harvey Dent"
+    "name": "Samantha Parrington",
+    "username": "valkyrie"
   },
   {
-    "username": "tyroc",
-    "name": "Troy Stewart"
+    "name": "Guy Gardner",
+    "username": "warrior"
   },
   {
-    "username": "ugogirl",
-    "name": "Edith Constance Sawyer"
+    "name": "William \"Billy\" Kaplan",
+    "username": "wiccan"
   },
   {
-    "username": "valkyrie",
-    "name": "Samantha Parrington"
+    "name": "James Logan Howlett",
+    "username": "wolverine"
   },
   {
-    "username": "warrior",
-    "name": "Guy Gardner"
+    "name": "Donna Troy",
+    "username": "wondergirl"
   },
   {
-    "username": "wiccan",
-    "name": "William \"Billy\" Kaplan"
+    "name": "Diana Prince",
+    "username": "wonderwoman"
   },
   {
-    "username": "wolverine",
-    "name": "James Logan Howlett"
+    "name": "Dylan Beattie",
+    "username": "dylan"
   },
   {
-    "username": "wondergirl",
-    "name": "Donna Troy"
+    "name": "Matthew Muggeridge",
+    "username": "mugman"
   },
   {
-    "username": "wonderwoman",
-    "name": "Diana Prince"
+    "name": "Jonathan Marks",
+    "username": "marksman"
+  },
+  {
+    "name": "Carla Horstmann",
+    "username": "horseman"
+  },
+  {
+    "name": "Sheena Macgyver",
+    "username": "owlwoman"
   }
 ]

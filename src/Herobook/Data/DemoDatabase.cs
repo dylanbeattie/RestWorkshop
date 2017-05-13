@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web.Hosting;
 using Herobook.Data.Entities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Herobook.Data {
     public class DemoDatabase : IDatabase {
-
         private static readonly IList<Profile> profiles;
         private static readonly IList<Friendship> friendships;
+
+        private static JsonSerializerSettings settings = new JsonSerializerSettings {
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            Formatting = Formatting.Indented
+        };
 
         static DemoDatabase() {
             profiles = ReadData<IList<Profile>>("profiles") ?? new List<Profile>();
@@ -24,6 +30,12 @@ namespace Herobook.Data {
             Save();
         }
 
+        public void DeleteProfile(string username) {
+            var target = FindProfile(username);
+            profiles.Remove(target);
+            Save();
+        }
+
         public int CountProfiles() {
             return profiles.Count;
         }
@@ -33,12 +45,12 @@ namespace Herobook.Data {
         }
 
         public void CreateProfile(Profile profile) {
-            if (LoadProfile(profile.Username) != null) throw new ArgumentException("That username is not available");
+            if (FindProfile(profile.Username) != null) throw new ArgumentException("That username is not available");
             profiles.Add(profile);
             Save();
         }
 
-        public Profile LoadProfile(string username) {
+        public Profile FindProfile(string username) {
             return profiles.FirstOrDefault(p => p.Username == username);
         }
 
@@ -47,7 +59,7 @@ namespace Herobook.Data {
                 .SelectMany(f => f.Names)
                 .Distinct()
                 .Where(g => g != username);
-            return friends.Select(LoadProfile);
+            return friends.Select(FindProfile);
         }
 
         private static string Qualify(string filePath) {
@@ -69,7 +81,7 @@ namespace Herobook.Data {
         }
 
         private void WriteData(string filename, object data) {
-            File.WriteAllText(Qualify(filename + ".json"), JsonConvert.SerializeObject(data, Formatting.Indented));
+            File.WriteAllText(Qualify(filename + ".json"), JsonConvert.SerializeObject(data, settings));
         }
     }
 }

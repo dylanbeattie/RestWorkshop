@@ -1,32 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using Herobook.Data;
+using Herobook.Data.Entities;
 
 namespace Herobook.Controllers.Api {
     public class ProfilesController : ApiController {
+        private readonly IDatabase db;
 
-        private IDatabase database;
         public ProfilesController() {
-            database = new DemoDatabase();
+            db = new DemoDatabase();
         }
 
-        // GET api/<controller>
+        // GET api/profiles
         public object Get() {
-            return (database.ListProfiles());
+            return db.ListProfiles();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id) {
-            return "value";
+        // GET api/profiles/{username}
+        public object Get(string id) {
+            return db.FindProfile(id);
         }
 
-        // POST api/<controller>
-        public void Post([FromBody] string value) { }
+        // POST api/profiles
+        public object Post([FromBody] Profile profile) {
+            var existing = db.FindProfile(profile.Username);
+            if (existing == null) {
+                db.CreateProfile(profile);
+                return Created($"/profiles/{profile.Username}", profile);
+            }
+            return Request.CreateResponse(HttpStatusCode.Conflict, "That username is not available");
+        }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value) { }
+        // PUT api/profiles/{username}
+        public object Put(string id, [FromBody] Profile profile) {
+            return profile;
+        }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id) { }
+        // DELETE api/profiles/{username}
+        public void Delete(string id) {
+            db.DeleteProfile(id);
+        }
     }
 }

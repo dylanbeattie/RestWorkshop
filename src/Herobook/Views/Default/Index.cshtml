@@ -11,14 +11,14 @@
     <title>Herobook API</title>
 </head>
 <body>
-    <h1>Herobook API Server</h1>
-    <p>
-        Herobook API: <a href="/api/">/api</a>
-        <a href="@Url.Content("api/profiles")">/api/profiles/</a>
-    </p>
-    <p>
-        Interactive API Explorer: <a href="/explorer/">/explorer</a>
-    </p>
+<h1>Herobook API Server at @HttpContext.Current.Request.Url</h1>
+<p>
+    Herobook API: <a href="/api/">/api</a>
+    <a href=" @Url.Content("api/profiles")">/api/profiles/</a>
+</p>
+<p>
+    Interactive API Explorer: <a href="/explorer/">/explorer</a>
+</p>
 
 </body>
 </html>

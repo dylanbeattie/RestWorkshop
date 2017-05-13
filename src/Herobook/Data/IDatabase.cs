@@ -6,8 +6,9 @@ namespace Herobook.Data {
         IEnumerable<Profile> ListProfiles();
         int CountProfiles();
         void CreateProfile(Profile profile);
-        Profile LoadProfile(string username);
+        Profile FindProfile(string username);
         IEnumerable<Profile> LoadFriends(string username);
         void CreateFriendship(string username1, string username2);
+        void DeleteProfile(string username);
     }
 }
