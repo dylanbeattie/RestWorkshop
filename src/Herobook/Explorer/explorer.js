@@ -10,23 +10,31 @@ function getCookie(key) {
 }
 
 (function explorerViewModel() {
+
     var self = this;
 
-    htmlEncode = function(value) {
+    htmlEncode = function (value) {
         return $("<div/>").text(value).html();
     };
-    this.hideSpinner = function(callback) { $("#spinner").fadeOut(callback); };
-    this.showSpinner = function(callback) { $("#spinner").fadeIn(callback); };
 
-    this.buildErrorHandler = function(method, absoluteUrl, callback) {
-        return function(jqXHR, textStatus, errorThrown) {
-            var headers = jqXHR.getAllResponseHeaders();
-            var responseContentType = jqXHR.getResponseHeader("Content-Type");
+    this.hideSpinner = function (callback) { $("#spinner").fadeOut(callback); };
+    this.showSpinner = function (callback) { $("#spinner").fadeIn(callback); };
+
+    renderHeader = function (jqXhr, method, absoluteUrl, textStatus) {
+        var tokens = new Array();
+        var headers = jqXhr.getAllResponseHeaders();
+        tokens.push("<strong>", method, " ", absoluteUrl, "</strong>\r\n\r\n");
+        tokens.push(hyperlink(headers.replace(/access\-control.*\r\n/mg, "") + "\r\n"));
+        tokens.push(jqXhr.status + " " + textStatus + "\r\n\r\n");
+        tokens.push("<hr />");
+        return (tokens.join(""));
+    }
+
+    this.buildErrorHandler = function (method, absoluteUrl, callback) {
+        return function (jqXhr, textStatus, errorThrown) {
             var tokens = new Array();
-            tokens.push("<strong>" + method + " " + absoluteUrl + "</strong>\r\n\r\n");
-            tokens.push(hyperlink(headers.replace(/access\-control.*\r\n/mg, "") + "\r\n"));
-            tokens.push(jqXHR.status + " " + textStatus + "\r\n\r\n");
-            tokens.push("<hr />");
+            tokens.push(renderHeader(jqXhr, method, absoluteUrl, textStatus));
+            var responseContentType = jqXhr.getResponseHeader("Content-Type");
             if (/application\/.*json/.test(responseContentType)) {
                 try {
                     tokens.push(JSON
@@ -34,10 +42,10 @@ function getCookie(key) {
                         .replace(/\\r\\n/g, "\r\n")
                         .replace(/ --->/g, "\r\n    --->"));
                 } catch (error) {
-                    tokens.push(jqXHR.responseText);
+                    tokens.push(jqXhr.responseText);
                 }
             } else {
-                tokens.push(htmlEncode(jqXHR.responseText));
+                tokens.push(htmlEncode(jqXhr.responseText));
             }
             $("#json-data").html(tokens.join(""));
             self.hideSpinner();
@@ -45,20 +53,17 @@ function getCookie(key) {
         };
     };
 
-    this.buildSuccessHandler = function(method, absoluteUrl, callback) {
-        return function(data, textStatus, jqXhr) {
-            var headers = jqXhr.getAllResponseHeaders();
-            var tokens = new Array();
-            tokens.push("<strong>", method, " ", absoluteUrl, "</strong>\r\n\r\n");
-            tokens.push(jqXhr.status + " " + textStatus + "\r\n\r\n");
-            tokens.push(hyperlink(headers.replace(/access\-control.*\r\n/mg, ""), "\r\n"));
-            tokens.push("<hr />");
-            var html = tokens.join("");
+    this.buildSuccessHandler = function (method, absoluteUrl, callback) {
+        return function (data, textStatus, jqXhr) {
+            var html = renderHeader(jqXhr, method, absoluteUrl, textStatus)
             if (typeof data !== "undefined" && data !== null) {
-                var putJson = JSON.stringify(simplify(data), null, 4);
-                var actions = scan(data);
+                var resourceAsSimpleJson = JSON.stringify(simplify(data), null, 2);
+
+                var actions = extractActions(data);
+
                 var json = JSON.stringify(data, null, 2);
                 html += hyperlink(json);
+
                 for (var key in actions) {
                     if (!actions.hasOwnProperty(key)) continue;
                     console.log(key);
@@ -76,7 +81,7 @@ function getCookie(key) {
                         form += "<p><label>type:</label>" + action.type + "</p>";
                         form += "<p><label>body:</label> <textarea rows='10' cols='80'>";
                         if (action.method === "PUT") {
-                            form += putJson;
+                            form += resourceAsSimpleJson;
                         }
                         form += "</textarea></p>";
                     }
@@ -102,11 +107,11 @@ function getCookie(key) {
         };
     };
 
-    this.loadResource = function(url, method, data, callback) {
+    this.sendRequest = function (url, method, data, callback) {
         var absoluteUrl = $("#server-input").val() + url;
         var type = method || "GET";
         console.log(type + " " + absoluteUrl);
-        this.showSpinner(function() {
+        this.showSpinner(function () {
             $.ajax({
                 headers: { Accept: $("#api-version-select").val() },
                 url: absoluteUrl,
@@ -114,7 +119,9 @@ function getCookie(key) {
                 data: data,
                 contentType: "application/json",
                 dataType: "json",
-                beforeSend: addHeaders,
+                beforeSend: function (xr) {
+                    // add any custom headers or logging here
+                },
                 success: buildSuccessHandler(type, absoluteUrl, callback),
                 error: buildErrorHandler(type, absoluteUrl, callback)
             });
@@ -122,7 +129,7 @@ function getCookie(key) {
         });
     };
 
-    this.simplify = function(data) {
+    this.simplify = function (data) {
         var result = new Object();
         for (var key in data) {
             if (!data.hasOwnProperty(key)) continue;
@@ -133,8 +140,8 @@ function getCookie(key) {
         return result;
     };
 
-    this.scan = function(data, path, hash) {
-        console.log(path);
+
+    this.extractActions = function (data, path, hash) {
         hash = hash || new Object();
         path = path === undefined ? "" : path;
         for (var key in data) {
@@ -149,32 +156,33 @@ function getCookie(key) {
                     delete data[key][subkey];
                 }
             } else if (typeof data[key] === "object") {
-                scan(data[key], prefix, hash);
+                extractActions(data[key], prefix, hash);
             }
         }
         return hash;
     };
 
-    this.hyperlink = function(text) {
+    this.hyperlink = function (text) {
         var html = text.replace(/"href": "([^<].*)"/g, '"href": "<a href="#$1" class="api-link">$1</a>"');
         html = html.replace(/^Location: (.*)$/gm, "Location: <a href=\"#$1\" class=\"api-link\">$1</a>");
         return html;
     };
 
-    this.addHeaders = function(xhr) {
-        // var username = $("#username-input").val();
-        // var password = $("#password-input").val();
-        // if (username && password) xhr.setRequestHeader("Authorization", "Basic " + btoa(username + ":" + password));
-    };
+    this.authorize = function (xhr, username, password) {
+        var base64EncodedCredentials = btoa(username + ":" + password);
+        if (username && password) xhr.setRequestHeader("Authorization", "Basic " + base64EncodedCredentials);
 
-    this.go = function(url) {
+    }
+
+    this.go = function (url) {
         if (typeof url === "string") {
             $("#endpoint-input").val(url);
         } else {
             url = $("#endpoint-input").val();
         }
         location.hash = "#" + url;
-        self.loadResource(url);
+        self.sendRequest(url);
+        return false;
     };
 
     function handleForm() {
@@ -190,20 +198,19 @@ function getCookie(key) {
             var json = $form.find("textarea").val();
             data = json ? JSON.stringify(JSON.parse(json)) : null;
         }
-        self.loadResource(url, method, data, function() {});
+        self.sendRequest(url, method, data, function () { });
         return false;
     }
 
-    $(function() {
-        $("#server-input").change(function() { setCookie("explorer_server", this.value); });
-        $("#explorer-form").submit(function() {
-            go();
-            return false;
+    $(function () {
+        $("#server-input").change(function () { setCookie("explorer_server", this.value); });
+        $("#explorer-form").submit(function () {
+            return (go());
         });
 
         $("#json-data").on("click",
             "a.action-button",
-            function() {
+            function () {
                 var $this = $(this);
                 var formId = $this.data("form-id");
                 var title = $this.data("action-name");
@@ -213,8 +220,8 @@ function getCookie(key) {
                     width: 600,
                     title: title,
                     buttons: [
-                        { text: "Submit", click: function() { $form.submit(); } },
-                        { text: "Cancel", click: function() { $(this).dialog("close"); } }
+                        { text: "Submit", click: function () { $form.submit(); } },
+                        { text: "Cancel", click: function () { $(this).dialog("close"); } }
                     ]
                 }).show();
                 return false;
@@ -225,17 +232,14 @@ function getCookie(key) {
         var apiServer = getCookie("explorer_server") || "http://localhost:5555";
         $("#server-input").val(apiServer);
 
-        $("#go-button").click(go);
-        $("#reset-button").click(function() {
+        $("#reset-button").click(function () {
             $("#json-data").html("Ready.");
             return (false);
         });
 
-        $(window).on("hashchange",
-            function() {
-                go(location.hash.substring(1));
-            });
+        $(window).on("hashchange", function () {
+            go(location.hash.substring(1));
+        });
         go(location.hash.substring(1) || "/");
-        // self.loadResource(url);
     });
 })();
