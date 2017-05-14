@@ -8,17 +8,26 @@
 
 <html>
 <head>
-    <title>Herobook API</title>
+    <title>REST Workshop</title>
 </head>
 <body>
-<h1>Herobook API Server at @HttpContext.Current.Request.Url</h1>
-<p>
-    Herobook API: <a href="/api/">/api</a>
-    <a href=" @Url.Content("api/profiles")">/api/profiles/</a>
-</p>
-<p>
-    Interactive API Explorer: <a href="/explorer/">/explorer</a>
-</p>
-
+    <h1>Hello!</h1>
+    <p>This is the sample API we'll be using in the Real World REST workshop.</p>
+    <h2>What's Here?</h2>
+    <ul>
+        <li>The API itself is at /api/</li>
+        <li>
+            You can browse the API endpoints using the built-in API explorer tool:
+            <ul>
+                @foreach (var uri in new[] {
+                    "/profiles", "/profiles/superman", "/profiles/superman/friends", "/profiles/superman/photos"
+                }) {
+                    <li>
+                        <a href="/explorer#/api@(uri)">/api@(uri)</a>
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
 </body>
 </html>

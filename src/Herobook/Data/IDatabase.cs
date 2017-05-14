@@ -10,6 +10,6 @@ namespace Herobook.Data {
         IEnumerable<Profile> LoadFriends(string username);
         void CreateFriendship(string username1, string username2);
         void DeleteProfile(string username);
-        Profile UpdateProfile(Profile profile);
+        Profile UpdateProfile(string username, Profile profile);
     }
 }

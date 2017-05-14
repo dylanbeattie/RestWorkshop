@@ -35,12 +35,13 @@ namespace Herobook.Data {
             Save();
         }
 
-        public Profile UpdateProfile(Profile profile) {
-            var target = FindProfile(profile.Username);
-            target.Username = profile.Username;
-            target.Name = profile.Name;
+        public Profile UpdateProfile(string username, Profile profile) {
+            var record = FindProfile(username);
+            if (record == null) profiles.Add(record = new Profile());
+            record.Username = profile.Username;
+            record.Name = profile.Name;
             Save();
-            return target;
+            return record;
         }
 
         public int CountProfiles() {

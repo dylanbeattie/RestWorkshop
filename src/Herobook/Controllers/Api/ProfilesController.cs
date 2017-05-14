@@ -14,7 +14,8 @@ namespace Herobook.Controllers.Api {
             db = new DemoDatabase();
         }
 
-        // GET api/profiles
+        [Route("api/profiles/")]
+        [HttpGet]
         public object Get(int index = 0, int count = 10) {
             var _links = Hal.Paginate(Request.RequestUri.AbsolutePath, index, count, db.CountProfiles());
             var items = db.ListProfiles().Skip(index).Take(count).Select(profile => profile.ToResource());
@@ -34,30 +35,32 @@ namespace Herobook.Controllers.Api {
             return result;
         }
 
-        // GET api/profiles/{username}
-        public object Get(string id) {
-            return (object)db.FindProfile(id)?.ToResource() ?? NotFound();
+        [Route("api/profiles/{username}")]
+        [HttpGet]
+        public object Get(string username) {
+            return (object)db.FindProfile(username)?.ToResource() ?? NotFound();
         }
 
-        // POST api/profiles
+        [Route("api/profiles/")]
+        [HttpPost]
         public object Post([FromBody] Profile profile) {
             var existing = db.FindProfile(profile.Username);
-            if (existing == null) {
-                db.CreateProfile(profile);
-                return Created(Url.Content($"~/api/profiles/{profile.Username}"), profile.ToResource());
-            }
-            return Request.CreateResponse(HttpStatusCode.Conflict, "That username is not available");
+            if (existing != null) return Request.CreateResponse(HttpStatusCode.Conflict, "That username is not available");
+            db.CreateProfile(profile);
+            return Created(Url.Content($"~/api/profiles/{profile.Username}"), profile.ToResource());
         }
 
-        // PUT api/profiles/{username}
-        public object Put(string id, [FromBody] Profile profile) {
-            var result = db.UpdateProfile(profile);
+        [Route("api/profiles/{username}")]
+        [HttpPut]
+        public object Put(string username, [FromBody] Profile profile) {
+            var result = db.UpdateProfile(username, profile);
             return result.ToResource();
         }
 
-        // DELETE api/profiles/{username}
-        public void Delete(string id) {
-            db.DeleteProfile(id);
+        [Route("api/profiles/{username}")]
+        [HttpDelete]
+        public void Delete(string username) {
+            db.DeleteProfile(username);
         }
     }
 }

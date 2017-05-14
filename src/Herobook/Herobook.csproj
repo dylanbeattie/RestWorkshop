@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BrowserJsonFormatter.cs" />
+    <Compile Include="App_Start\HttpConfigurationExtensions.cs" />
     <Compile Include="Helpers\Hal.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
