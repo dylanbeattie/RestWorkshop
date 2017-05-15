@@ -53,21 +53,13 @@ function getCookie(key) {
         };
     };
 
-    this.buildActionForm = function (key, action, body) {
-        var form = "<form class='api-form' id='form-" +
-                        key +
-                        "' method='" +
-                        action.method +
-                        "' action='" +
-                        action.href +
-                        "'>";
-        form += "<p><label>href:</label>" + action.href + "</p>";
-        form += "<p><label>method:</label>" + action.method + "</p>";
+    this.buildActionForm = function(key, action, body) {
+        var form = `<form class="api-form" id="form-${key}" method="${action.method}" action="${action.href}">
+            <p><label>href: </label>${action.href}</p>
+            <p><label>method: </label>${action.method}</p>`;
         if (action.type) {
-            form += "<p><label>type:</label>" + action.type + "</p>";
-            form += "<p><label>body:</label> <textarea rows='10' cols='80'>";
-            form += action["template"];
-            form += "</textarea></p>";
+            form += `<p><label>type:</label>${action.type}</p>
+                    <p><label>body:</label> <textarea rows="10" cols="80">${action.template}</textarea></p>`;
         }
         form += "</form>";
         return (form);
