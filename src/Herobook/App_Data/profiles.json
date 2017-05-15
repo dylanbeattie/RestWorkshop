@@ -1,9 +1,5 @@
 [
   {
-    "name": "Arnold Etchison",
-    "username": "abattoir"
-  },
-  {
     "name": "Abel",
     "username": "abel"
   },
@@ -970,5 +966,13 @@
   {
     "name": "Hans Gruber",
     "username": "gruber"
+  },
+  {
+    "name": "Jeremy Cargo",
+    "username": "Cargoman"
+  },
+  {
+    "name": "Carol Wheelock",
+    "username": "wheelie"
   }
 ]

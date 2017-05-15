@@ -53,14 +53,34 @@ function getCookie(key) {
         };
     };
 
+    this.buildActionForm = function (key, action, body) {
+        var form = "<form class='api-form' id='form-" +
+                        key +
+                        "' method='" +
+                        action.method +
+                        "' action='" +
+                        action.href +
+                        "'>";
+        form += "<p><label>href:</label>" + action.href + "</p>";
+        form += "<p><label>method:</label>" + action.method + "</p>";
+        if (action.type) {
+            form += "<p><label>type:</label>" + action.type + "</p>";
+            form += "<p><label>body:</label> <textarea rows='10' cols='80'>";
+            form += action["template"];
+            form += "</textarea></p>";
+        }
+        form += "</form>";
+        return (form);
+    }
+
     this.buildSuccessHandler = function (method, absoluteUrl, callback) {
         return function (data, textStatus, jqXhr) {
-            var html = renderHeader(jqXhr, method, absoluteUrl, textStatus)
+            var html = renderHeader(jqXhr, method, absoluteUrl, textStatus);
             if (typeof data !== "undefined" && data !== null) {
                 var resourceAsSimpleJson = JSON.stringify(simplify(data), null, 2);
 
-                var actions = extractActions(data);
-
+                var actions = tagActions(data);
+                tagLinks(data);
                 var json = JSON.stringify(data, null, 2);
                 html += hyperlink(json);
 
@@ -68,35 +88,20 @@ function getCookie(key) {
                     if (!actions.hasOwnProperty(key)) continue;
                     console.log(key);
                     var action = actions[key];
-                    var form = "<form class='api-form' id='form-" +
-                        key.replace(/\./g, "-") +
-                        "' method='" +
-                        action.method +
-                        "' action='" +
-                        action.href +
-                        "'>";
-                    form += "<p><label>href:</label>" + action.href + "</p>";
-                    form += "<p><label>method:</label>" + action.method + "</p>";
-                    if (action.type) {
-                        form += "<p><label>type:</label>" + action.type + "</p>";
-                        form += "<p><label>body:</label> <textarea rows='10' cols='80'>";
-                        if (action.method === "PUT") {
-                            form += resourceAsSimpleJson;
-                        }
-                        form += "</textarea></p>";
-                    }
-                    form += "</form>";
+
+                    var form = buildActionForm(key, action, resourceAsSimpleJson);
+
                     html = html.replace(key,
                         "<a class='action-button " +
                         action.method +
                         "' href='#' data-action-name='" +
                         action.name +
                         "' data-form-id='form-" +
-                        key.replace(/\./g, "-") +
+                        key +
                         "' id='link-" +
                         key +
                         "'>" +
-                        key.split(".").pop() +
+                        key.split("-").pop() +
                         "</a>" +
                         form);
                 }
@@ -140,30 +145,59 @@ function getCookie(key) {
         return result;
     };
 
-
-    this.extractActions = function (data, path, hash) {
+    this.tagLinks = function (data, path, hash) {
         hash = hash || new Object();
         path = path === undefined ? "" : path;
         for (var key in data) {
             if (!data.hasOwnProperty(key)) continue;
-            var prefix = (path === "" ? path : path + ".") + key;
-            if (key === "_actions") {
-                for (var subkey in data[key]) {
-                    if (!data[key].hasOwnProperty(subkey)) continue;
-                    var id = prefix + "." + subkey;
-                    data[key][id] = data[key][subkey];
-                    if (data[key].hasOwnProperty(subkey)) hash[id] = data[key][subkey];
-                    delete data[key][subkey];
+            var prefix = (path === "" ? path : path + "-") + key;
+            if (key === "_links") {
+                for (var linkName in data[key]) {
+                    if (!data[key].hasOwnProperty(linkName)) continue;
+                    var link = data[key][linkName];
+                    // Highlight hal+json HREFs so we can pick them up in a regex replace later.
+                    link.href = "__LINK__" + link.href;
                 }
             } else if (typeof data[key] === "object") {
-                extractActions(data[key], prefix, hash);
+                tagLinks(data[key], prefix, hash);
             }
         }
         return hash;
     };
 
+    function clone(thing) {
+        return(JSON.parse(JSON.stringify(thing)));
+    }
+
+    this.tagActions = function (data, path, hash) {
+        hash = hash || new Object();
+        path = path === undefined ? "" : path;
+        for (var key in data) {
+            if (!data.hasOwnProperty(key)) continue;
+            var prefix = (path === "" ? path : path + "-") + key;
+            if (key === "_actions") {
+                for (var subkey in data[key]) {
+                    if (!data[key].hasOwnProperty(subkey)) continue;
+                    var action = data[key][subkey];
+                    var uniqueId = prefix + "-" + subkey;
+                    hash[uniqueId] = clone(action);
+                    hash[uniqueId].template = /PUT/i.test(action.method)
+                        ? JSON.stringify(simplify(data), null, 2)
+                        : "{ }";
+                    data[key][uniqueId] = action;
+                    delete data[key][subkey];
+                }
+            } else if (typeof data[key] === "object") {
+                tagActions(data[key], prefix, hash);
+            }
+        }
+        return hash;
+    };
+
+
+
     this.hyperlink = function (text) {
-        var html = text.replace(/"href": "([^<].*)"/g, '"href": "<a href="#$1" class="api-link">$1</a>"');
+        var html = text.replace(/"href": "__LINK__([^<].*)"/g, '"href": "<a href="#$1" class="api-link">$1</a>"');
         html = html.replace(/^Location: (.*)$/gm, "Location: <a href=\"#$1\" class=\"api-link\">$1</a>");
         return html;
     };
