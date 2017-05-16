@@ -53,7 +53,7 @@ function getCookie(key) {
         };
     };
 
-    this.buildActionForm = function(key, action, body) {
+    this.buildActionForm = function (key, action, body) {
         var form = `<form class="api-form" id="form-${key}" method="${action.method}" action="${action.href}">
             <p><label>href: </label>${action.href}</p>
             <p><label>method: </label>${action.method}</p>`;
@@ -84,18 +84,9 @@ function getCookie(key) {
                     var form = buildActionForm(key, action, resourceAsSimpleJson);
 
                     html = html.replace(key,
-                        "<a class='action-button " +
-                        action.method +
-                        "' href='#' data-action-name='" +
-                        action.name +
-                        "' data-form-id='form-" +
-                        key +
-                        "' id='link-" +
-                        key +
-                        "'>" +
-                        key.split("-").pop() +
-                        "</a>" +
-                        form);
+                        `<a class="action-button ${action.method}" href="#"
+                            data-action-name="${action.name}"
+                            data-form-id="form-${key}" id="link-${key}">${key.split("-").pop()}</a>${form}`);
                 }
             }
             $("#json-data").html(html);
@@ -131,7 +122,6 @@ function getCookie(key) {
         for (var key in data) {
             if (!data.hasOwnProperty(key)) continue;
             if (/^_/.test(key)) continue; // Skip HAL+JSON hypermedia properties
-            if (/href/i.test(key)) continue; // Skip any HREF properties.
             result[key] = data[key];
         }
         return result;
@@ -158,7 +148,7 @@ function getCookie(key) {
     };
 
     function clone(thing) {
-        return(JSON.parse(JSON.stringify(thing)));
+        return (JSON.parse(JSON.stringify(thing)));
     }
 
     this.tagActions = function (data, path, hash) {

@@ -45,7 +45,8 @@ namespace Herobook.Helpers {
         public static dynamic ToResource(this Profile profile) {
             dynamic resource = profile.ToDynamic();
             resource._links = new {
-                self = Hal.Href($"/api/profiles/{profile.Username}")
+                self = Hal.Href($"/api/profiles/{profile.Username}"),
+                friends = Hal.Href($"/api/profiles/{profile.Username}/friends")
             };
             resource._actions = new {
                 update = new {

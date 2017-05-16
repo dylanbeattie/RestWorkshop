@@ -16,7 +16,7 @@ namespace Herobook.Controllers.Api {
 
         [Route("api/profiles/")]
         [HttpGet]
-        public object Get(int index = 0, int count = 10) {
+        public object GetProfile(int index = 0, int count = 10) {
             var _links = Hal.Paginate(Request.RequestUri.AbsolutePath, index, count, db.CountProfiles());
             var items = db.ListProfiles().Skip(index).Take(count).Select(profile => profile.ToResource());
             var _actions = new {
@@ -37,9 +37,16 @@ namespace Herobook.Controllers.Api {
 
         [Route("api/profiles/{username}")]
         [HttpGet]
-        public object Get(string username) {
+        public object GetProfile(string username) {
             return (object)db.FindProfile(username)?.ToResource() ?? NotFound();
         }
+
+        [Route("api/profiles/{username}/friends")]
+        [HttpGet]
+        public object GetProfileFriends(string username) {
+            return db.LoadFriends(username);
+        }
+
 
         [Route("api/profiles/")]
         [HttpPost]
