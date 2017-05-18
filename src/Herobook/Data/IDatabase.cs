@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Herobook.Data.Entities;
 
 namespace Herobook.Data {
@@ -11,5 +12,11 @@ namespace Herobook.Data {
         void CreateFriendship(string username1, string username2);
         void DeleteProfile(string username);
         Profile UpdateProfile(string username, Profile profile);
+
+        IEnumerable<Status> LoadStatuses(string username);
+        Status LoadStatus(Guid statusId);
+        Status UpdateStatus(Guid statusId, Status status);
+        void DeleteStatus(Guid statusId);
+        Status CreateStatus(Status status);
     }
 }

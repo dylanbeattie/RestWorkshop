@@ -1,9 +1,10 @@
 ﻿using System;
 
 namespace Herobook.Data.Entities {
-    public class StatusUpdate {
+    public class Status {
+        public Guid StatusId { get; set; }
         public string Username { get; set; }
         public string Comment { get; set; }
-        public DateTime PostedAt { get; set; }
+        public DateTimeOffset PostedAt { get; set; }
     }
 }

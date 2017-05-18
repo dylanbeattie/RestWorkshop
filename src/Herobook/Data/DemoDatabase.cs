@@ -11,6 +11,7 @@ namespace Herobook.Data {
     public class DemoDatabase : IDatabase {
         private static readonly IList<Profile> profiles;
         private static readonly IList<Friendship> friendships;
+        private static readonly IList<Status> statuses;
 
         private static readonly JsonSerializerSettings settings = new JsonSerializerSettings {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -20,6 +21,14 @@ namespace Herobook.Data {
         static DemoDatabase() {
             profiles = ReadData<IList<Profile>>("profiles") ?? new List<Profile>();
             friendships = ReadData<IList<Friendship>>("friendships") ?? new List<Friendship>();
+            statuses = ReadData<IList<Status>>("statuses") ?? new List<Status>();
+        }
+
+
+        private void Save() {
+            WriteData("profiles", profiles);
+            WriteData("friendships", friendships);
+            WriteData("statuses", statuses);
         }
 
         public void CreateFriendship(string username1, string username2) {
@@ -83,13 +92,44 @@ namespace Herobook.Data {
             }
         }
 
-        private void Save() {
-            WriteData("profiles", profiles);
-            WriteData("friendships", friendships);
-        }
 
         private void WriteData(string filename, object data) {
             File.WriteAllText(Qualify(filename + ".json"), JsonConvert.SerializeObject(data, settings));
+        }
+
+        public IEnumerable<Status> LoadStatuses(string username) {
+            return statuses.Where(s => s.Username == username);
+        }
+
+        public Status LoadStatus(Guid statusId) {
+            return statuses.FirstOrDefault(s => s.StatusId == statusId);
+        }
+
+        public Status CreateStatus(Status status) {
+            status.PostedAt = DateTimeOffset.Now;
+            return UpdateStatus(Guid.NewGuid(), status);
+        }
+
+        public Status UpdateStatus(Guid statusId, Status status) {
+            var target = LoadStatus(statusId);
+            if (target == default(Status)) {
+                target = new Status() {
+                    StatusId = statusId
+                };
+                statuses.Add(target);
+            }
+            target.Comment = status.Comment;
+            target.PostedAt = status.PostedAt;
+            target.Username = status.Username;
+            Save();
+            return target;
+        }
+
+        public void DeleteStatus(Guid statusId) {
+            var target = LoadStatus(statusId);
+            if (target == default(Status)) return;
+            statuses.Remove(target);
+            Save();
         }
     }
 }

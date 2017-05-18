@@ -150,7 +150,7 @@
     <Compile Include="Data\Entities\Friendship.cs" />
     <Compile Include="Data\Entities\Photo.cs" />
     <Compile Include="Data\Entities\Profile.cs" />
-    <Compile Include="Data\Entities\StatusUpdate.cs" />
+    <Compile Include="Data\Entities\Status.cs" />
     <Compile Include="Data\IDatabase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +167,7 @@
     <Content Include="App_Data\friendships.json" />
     <Content Include="App_Data\profiles.json" />
     <Content Include="Schemas\profile.json" />
+    <Content Include="App_Data\statuses.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,6 @@
-﻿namespace Herobook.Data.Entities {
+﻿using System;
+
+namespace Herobook.Data.Entities {
     public class Profile {
         public Profile() { }
 
@@ -9,5 +11,6 @@
 
         public string Name { get; set; }
         public string Username { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }

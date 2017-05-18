@@ -42,11 +42,31 @@ namespace Herobook.Helpers {
             return d.GetType().GetProperties().ToDictionary(x => x.Name, x => x.GetValue(d, null));
         }
 
+        public static dynamic ToResource(this Status status) {
+            dynamic resource = status.ToDynamic();
+            var href = $"/api/profiles/{status.Username}/statuses/{status.StatusId}";
+            resource._actions = new {
+                update = new {
+                    name = "Update this status",
+                    href,
+                    method = "PUT",
+                    type = "application/json"
+                },
+                delete = new {
+                    name = "Delete this status",
+                    href,
+                    method = "DELETE"
+                }
+            };
+            return (resource);
+        }
+
         public static dynamic ToResource(this Profile profile) {
             dynamic resource = profile.ToDynamic();
             resource._links = new {
                 self = Hal.Href($"/api/profiles/{profile.Username}"),
-                friends = Hal.Href($"/api/profiles/{profile.Username}/friends")
+                friends = Hal.Href($"/api/profiles/{profile.Username}/friends"),
+                statuses = Hal.Href($"/api/profiles/{profile.Username}/statuses")
             };
             resource._actions = new {
                 update = new {
