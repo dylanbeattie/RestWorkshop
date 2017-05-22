@@ -165,7 +165,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BrowserJsonFormatter.cs" />
     <Compile Include="App_Start\HttpConfigurationExtensions.cs" />
-    <Compile Include="Helpers\Hal.cs" />
+    <Compile Include="App_Start\Helpers\Routing\ContentTypeRoute.cs" />
+    <Compile Include="App_Start\Helpers\Routing\ContentTypeConstraint.cs" />
+    <Compile Include="Controllers\Api\PhotosController.cs" />
+    <Compile Include="Controllers\Api\StatusesController.cs" />
+    <Compile Include="App_Start\Helpers\Hal.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -203,6 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

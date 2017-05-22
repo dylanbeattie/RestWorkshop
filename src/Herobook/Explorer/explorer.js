@@ -25,9 +25,24 @@ function getCookie(key) {
         var headers = jqXhr.getAllResponseHeaders();
         tokens.push("<strong>", method, " ", absoluteUrl, "</strong>\r\n\r\n");
         tokens.push(hyperlink(headers.replace(/access\-control.*\r\n/mg, "") + "\r\n"));
-        tokens.push(jqXhr.status + " " + textStatus + "\r\n\r\n");
-        tokens.push("<hr />");
         return (tokens.join(""));
+    }
+
+    this.readBlob = function (absoluteUrl, mimeType, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            // Blob > ArrayBuffer: http://stackoverflow.com/a/15981017/4200092
+            var reader = new FileReader();
+            reader.onload = function () {
+                callback(xhr, this.result);
+            };
+            reader.readAsDataURL(this.response);
+        };
+        xhr.open("get", absoluteUrl, true);
+        xhr.setRequestHeader("Accept", mimeType);
+        xhr.responseType = "blob";
+        xhr.send();
+        return (true);
     }
 
     this.buildErrorHandler = function (method, absoluteUrl, callback) {
@@ -35,7 +50,19 @@ function getCookie(key) {
             var tokens = new Array();
             tokens.push(renderHeader(jqXhr, method, absoluteUrl, textStatus));
             var responseContentType = jqXhr.getResponseHeader("Content-Type");
-            if (/application\/.*json/.test(responseContentType)) {
+            if (/image\/.*/.test(responseContentType)) {
+                return readBlob(absoluteUrl, responseContentType, function (xhr, data) {
+                    tokens.push(xhr.status + "\r\n\r\n");
+                    tokens.push("<hr />");
+                    var img = `<img src="${data}" />`;
+                    tokens.push(img);
+                    $("#json-data").html(tokens.join(""));
+                    self.hideSpinner();
+                    if (typeof callback === "function") callback();
+                });
+            } else if (/application\/.*json/.test(responseContentType)) {
+                tokens.push(jqXhr.status + " " + textStatus + "\r\n\r\n");
+                tokens.push("<hr />");
                 try {
                     tokens.push(JSON
                         .stringify(JSON.parse(jqXHR.responseText), null, 2)
@@ -106,8 +133,8 @@ function getCookie(key) {
                 data: data,
                 contentType: "application/json",
                 dataType: "json",
-                beforeSend: function (xr) {
-                    // add any custom headers or logging here
+                beforeSend: function (xhr) {
+                    addHeaders(xhr);
                 },
                 success: buildSuccessHandler(type, absoluteUrl, callback),
                 error: buildErrorHandler(type, absoluteUrl, callback)
@@ -115,6 +142,20 @@ function getCookie(key) {
 
         });
     };
+
+    this.addHeaders = function (xhr) {
+        var headers = $("#headers-textarea").val().split(/\r\n/g);
+        for (var i = 0; i < headers.length; i++) {
+            var tokens = headers[i].split(/:/);
+            if (tokens && tokens.length > 1) {
+                var name = tokens[0].trim();
+                var value = tokens[1].trim();
+                console.log(`Setting header ${name}: ${value}`);
+                xhr.setRequestHeader(name, value);
+            }
+        }
+    }
+
 
     this.simplify = function (data) {
         var result = new Object();
@@ -237,6 +278,7 @@ function getCookie(key) {
 
     $(function () {
         $("#server-input").change(function () { setCookie("explorer_server", this.value); });
+        $("#headers-textarea").change(function () { setCookie("explorer_headers", this.value); });
         $("#explorer-form").submit(function () {
             return (go());
         });
@@ -263,7 +305,9 @@ function getCookie(key) {
         $(document).on("submit", "form.api-form", handleForm);
 
         var apiServer = getCookie("explorer_server") || "http://localhost:5555";
+        var headers = getCookie("explorer_headers") || "";
         $("#server-input").val(apiServer);
+        $("#headers-textarea").val(headers);
 
         $("#reset-button").click(function () {
             $("#json-data").html("Ready.");

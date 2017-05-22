@@ -18,5 +18,11 @@ namespace Herobook.Data {
         Status UpdateStatus(Guid statusId, Status status);
         void DeleteStatus(Guid statusId);
         Status CreateStatus(Status status);
+
+        IEnumerable<Photo> LoadPhotos(string username);
+        Photo CreatePhoto(Photo photo);
+        Photo LoadPhoto(Guid photoGuid);
+        Photo UpdatePhoto(Guid photoId, Photo photo);
+        void DeletePhoto(Guid photoId);
     }
 }

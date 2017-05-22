@@ -5,37 +5,41 @@ html {
     margin: 0;
 }
 
-body { padding-top: 64px; }
+body { padding-left: 300px; }
 
 fieldset#explorer-fieldset {
     background-color: #ccc;
     border: 0;
     border-bottom: 1px solid #000;
     left: 0;
+    bottom: 0;
     position: fixed;
+    width: 300px;
     right: 0;
     top: 0;
     z-index: 9;
+    box-sizing: border-box;
 }
 
 fieldset#explorer-fieldset label {
     display: inline-block;
     font-size: 14px;
     left: 4px;
-    position: relative;
-    top: -24px;
-    width: 0;
-}
+    /*position: relative;
+    top: -24px;*/
 
-fieldset#explorer-fieldset label[for=headers-textarea] { top: -56px; }
+}
 
 fieldset#explorer-fieldset input, fieldset#explorer-fieldset textarea, fieldset#explorer-fieldset select {
     border: 1px solid #000;
     border-radius: 2px;
     box-sizing: border-box;
     height: 30px;
-    margin-top: 24px;
+    margin-top: 0px;
     padding: 4px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 
@@ -43,31 +47,16 @@ fieldset#explorer-fieldset input[type=button] { background-color: #999; }
 
 fieldset#explorer-fieldset input[type=text], fieldset#explorer-fieldset input[type=password] {
     font-family: Consolas;
-    width: 150px;
 }
-
-fieldset#explorer-fieldset input#server-input {
-    box-sizing: border-box;
-    width: 40%;
-}
-
-fieldset#explorer-fieldset input#endpoint-input {
-    box-sizing: border-box;
-    width: 40%;
-}
-
-fieldset#explorer-fieldset textarea#headers-textarea {
-    height: 40px;
-    width: 634px;
-}
-
-
 
 pre#json-data {
     border: 1px solid #ccc;
     padding: 8px;
 }
 
+fieldset#explorer-fieldset textarea#headers-textarea {
+    height: 100px;
+}
 div#response-wrapper { position: relative; }
 
 div#response-wrapper div#spinner {

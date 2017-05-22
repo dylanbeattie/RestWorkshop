@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Dynamic;
 using System.Linq;
 using Herobook.Data.Entities;
@@ -61,12 +62,42 @@ namespace Herobook.Helpers {
             return (resource);
         }
 
+        public static dynamic ToResource(this Photo photo) {
+            dynamic resource = photo.ToDynamic();
+            var href = $"/api/profiles/{photo.Username}/photos/{photo.PhotoId}";
+            resource._links = new {
+                self = Hal.Href(href)
+            };
+            resource._actions = new {
+                update = new {
+                    name = "Update this photo",
+                    href = href,
+                    method = "PUT",
+                    type = "application/json"
+                },
+                upload = new {
+                    name = "Upload this photo",
+                    href,
+                    method = "PUT",
+                    type = "image/jpeg"
+                },
+                delete = new {
+                    name = "Delete this photo",
+                    href,
+                    method = "DELETE"
+                }
+            };
+            return (resource);
+
+        }
+
         public static dynamic ToResource(this Profile profile) {
             dynamic resource = profile.ToDynamic();
             resource._links = new {
                 self = Hal.Href($"/api/profiles/{profile.Username}"),
                 friends = Hal.Href($"/api/profiles/{profile.Username}/friends"),
-                statuses = Hal.Href($"/api/profiles/{profile.Username}/statuses")
+                statuses = Hal.Href($"/api/profiles/{profile.Username}/statuses"),
+                photos = Hal.Href($"/api/profiles/{profile.Username}/photos")
             };
             resource._actions = new {
                 update = new {
@@ -82,6 +113,14 @@ namespace Herobook.Helpers {
                 }
             };
             return resource;
+        }
+    }
+
+    /// <summary>Turn the ImageCodecInfo Extension property, which looks like *.JPG;*.JPE*,*.JPEG, into a writable file extension</summary>
+    public static class ImageCodecInfoExtensions {
+        public static string GetWritableFileExtension(this ImageCodecInfo codec) {
+            var extension = codec.FilenameExtension.ToLowerInvariant().Split(';').First();
+            return extension.Substring(2);
         }
     }
 }

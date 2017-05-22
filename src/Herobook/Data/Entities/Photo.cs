@@ -2,9 +2,9 @@
 
 namespace Herobook.Data.Entities {
     public class Photo {
-        public string Filename { get; set; }
+        public Guid PhotoId { get; set; }
         public string Username { get; set; }
         public string Caption { get; set; }
-        public DateTime PostedAt { get; set; }
+        public DateTimeOffset PostedAt { get; set; }
     }
 }

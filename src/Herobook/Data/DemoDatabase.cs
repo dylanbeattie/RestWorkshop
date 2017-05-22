@@ -12,6 +12,7 @@ namespace Herobook.Data {
         private static readonly IList<Profile> profiles;
         private static readonly IList<Friendship> friendships;
         private static readonly IList<Status> statuses;
+        private static readonly IList<Photo> photos;
 
         private static readonly JsonSerializerSettings settings = new JsonSerializerSettings {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -22,6 +23,7 @@ namespace Herobook.Data {
             profiles = ReadData<IList<Profile>>("profiles") ?? new List<Profile>();
             friendships = ReadData<IList<Friendship>>("friendships") ?? new List<Friendship>();
             statuses = ReadData<IList<Status>>("statuses") ?? new List<Status>();
+            photos = ReadData<IList<Photo>>("photos") ?? new List<Photo>();
         }
 
 
@@ -29,6 +31,7 @@ namespace Herobook.Data {
             WriteData("profiles", profiles);
             WriteData("friendships", friendships);
             WriteData("statuses", statuses);
+            WriteData("photos", photos);
         }
 
         public void CreateFriendship(string username1, string username2) {
@@ -129,6 +132,40 @@ namespace Herobook.Data {
             var target = LoadStatus(statusId);
             if (target == default(Status)) return;
             statuses.Remove(target);
+            Save();
+        }
+
+        public IEnumerable<Photo> LoadPhotos(string username) {
+            return photos.Where(p => p.Username == username);
+        }
+
+        public Photo CreatePhoto(Photo photo) {
+            return UpdatePhoto(Guid.NewGuid(), photo);
+        }
+
+        public Photo LoadPhoto(Guid photoGuid) {
+            return photos.FirstOrDefault(photo => photo.PhotoId == photoGuid);
+        }
+
+        public Photo UpdatePhoto(Guid photoId, Photo photo) {
+            var target = LoadPhoto(photoId);
+            if (target == default(Photo)) {
+                target = new Photo() {
+                    PhotoId = photoId
+                };
+                photos.Add(target);
+            }
+            target.Caption = photo.Caption;
+            target.PostedAt = photo.PostedAt;
+            target.Username = photo.Username;
+            Save();
+            return target;
+        }
+
+        public void DeletePhoto(Guid photoId) {
+            var target = LoadPhoto(photoId);
+            if (target == default(Photo)) return;
+            photos.Remove(target);
             Save();
         }
     }

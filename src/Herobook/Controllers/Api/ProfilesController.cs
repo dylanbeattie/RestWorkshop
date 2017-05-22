@@ -17,7 +17,7 @@ namespace Herobook.Controllers.Api {
 
         [Route("api/profiles/")]
         [HttpGet]
-        public object GetProfile(int index = 0, int count = 10) {
+        public object GetProfiles(int index = 0, int count = 10) {
             var _links = Hal.Paginate(Request.RequestUri.AbsolutePath, index, count, db.CountProfiles());
             var items = db.ListProfiles().Skip(index).Take(count).Select(profile => profile.ToResource());
             var _actions = new {
@@ -49,32 +49,6 @@ namespace Herobook.Controllers.Api {
             return db.LoadFriends(username);
         }
 
-
-        [Route("api/profiles/{username}/statuses")]
-        [HttpGet]
-        public object GetProfileStatuses(string username) {
-            return db.LoadStatuses(username).Select(s => s.ToResource());
-        }
-
-        [Route("api/profiles/{username}/statuses")]
-        [HttpPost]
-        public object PostProfileStatus(string username, [FromBody]Status status) {
-            status.Username = username;
-            status.PostedAt = DateTimeOffset.Now;
-            return db.CreateStatus(status).ToResource();
-        }
-
-        [Route("api/profiles/{username}/statuses/{statusId}")]
-        [HttpGet]
-        public object GetProfileStatus(string username, Guid statusGuid) {
-            return db.LoadStatus(statusGuid).ToResource();
-        }
-
-        [Route("api/profiles/{username}/statuses/{statusId}")]
-        [HttpPut]
-        public object UpdateProfileStatus(string username, Guid statusId, [FromBody] Status status) {
-            return db.UpdateStatus(statusId, status);
-        }
 
         [Route("api/profiles/")]
         [HttpPost]
