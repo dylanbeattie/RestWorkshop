@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http.Routing;
 
-namespace Herobook.Helpers.Routing {
+namespace Herobook.Routing {
     // Code from http://massivescale.com/web-api-routing-by-content-type/
     internal class ContentTypeConstraint : IHttpRouteConstraint {
         public ContentTypeConstraint(string allowedMediaType) {

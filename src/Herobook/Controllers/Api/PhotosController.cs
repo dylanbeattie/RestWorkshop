@@ -10,8 +10,8 @@ using System.Web.Hosting;
 using System.Web.Http;
 using Herobook.Data;
 using Herobook.Data.Entities;
-using Herobook.Helpers;
-using Herobook.Helpers.Routing;
+using Herobook.Hypermedia;
+using Herobook.Routing;
 
 namespace Herobook.Controllers.Api {
     public class PhotosController : ApiController {
@@ -77,7 +77,9 @@ namespace Herobook.Controllers.Api {
             foreach (var file in files) {
                 var pathToReturn = file;
                 using (var bitmap = Image.FromFile(file)) {
-                    if (type.MediaType != GetMimeType(bitmap.RawFormat)) {
+                    var requestedType = type.MediaType;
+                    var availableType = GetMimeType(bitmap.RawFormat);
+                    if (type.MediaType != availableType) {
                         pathToReturn = Path.Combine(path, photo.PhotoId + "." + codec.GetWritableFileExtension());
                         bitmap.Save(pathToReturn, format);
                     }
@@ -105,7 +107,7 @@ namespace Herobook.Controllers.Api {
 
         private object UploadFile(string username, Guid photoId, string fileExtension) {
             var stream = this.Request.Content.ReadAsStreamAsync().Result;
-            var path = HostingEnvironment.MapPath($"~/App_Data/photos/{username}/{photoId}.jpg");
+            var path = HostingEnvironment.MapPath($"~/App_Data/photos/{username}/{photoId}.{fileExtension}");
             var directoryPath = Path.GetDirectoryName(path);
             var directory = new DirectoryInfo(directoryPath);
             if (!directory.Exists) directory.Create();

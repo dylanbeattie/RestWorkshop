@@ -5,7 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using Herobook.Data.Entities;
 
-namespace Herobook.Helpers {
+namespace Herobook.Hypermedia {
     public class Hal {
         public static dynamic Href(string url) {
             return new { href = url };

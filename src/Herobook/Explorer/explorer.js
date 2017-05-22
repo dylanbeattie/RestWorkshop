@@ -51,15 +51,17 @@ function getCookie(key) {
             tokens.push(renderHeader(jqXhr, method, absoluteUrl, textStatus));
             var responseContentType = jqXhr.getResponseHeader("Content-Type");
             if (/image\/.*/.test(responseContentType)) {
-                return readBlob(absoluteUrl, responseContentType, function (xhr, data) {
-                    tokens.push(xhr.status + "\r\n\r\n");
-                    tokens.push("<hr />");
-                    var img = `<img src="${data}" />`;
-                    tokens.push(img);
-                    $("#json-data").html(tokens.join(""));
-                    self.hideSpinner();
-                    if (typeof callback === "function") callback();
-                });
+                return readBlob(absoluteUrl,
+                    responseContentType,
+                    function (xhr, data) {
+                        tokens.push(xhr.status + "\r\n\r\n");
+                        tokens.push("<hr />");
+                        var img = `<img src="${data}" />`;
+                        tokens.push(img);
+                        $("#json-data").html(tokens.join(""));
+                        self.hideSpinner();
+                        if (typeof callback === "function") callback();
+                    });
             } else if (/application\/.*json/.test(responseContentType)) {
                 tokens.push(jqXhr.status + " " + textStatus + "\r\n\r\n");
                 tokens.push("<hr />");
@@ -121,6 +123,38 @@ function getCookie(key) {
         };
     };
 
+
+    this.setHeader = function (name, value) {
+        var hash = getHeaders();
+        hash[name] = value;
+        var headers = new Array();
+        for (var key in hash) {
+            if (hash.hasOwnProperty(key)) headers.push(key + ": " + hash[key]);
+        }
+        $("#headers-textarea").val(headers.join("\n"));
+    }
+
+    this.getHeaders = function () {
+        var headers = $("#headers-textarea").val().split(/[\r\n]+/g);
+        var result = {};
+        for (var i = 0; i < headers.length; i++) {
+            var tokens = headers[i].split(/:/);
+            if (tokens && tokens.length > 1) {
+                result[tokens[0].trim()] = tokens[1].trim();
+            }
+        }
+        return (result);
+    }
+
+    var setRequestHeaders = function (xhr) {
+        var hash = getHeaders();
+        for (var name in hash) {
+            if (!hash.hasOwnProperty(name)) continue;
+            console.log(`Setting header ${name}: ${hash[name]}`);
+            xhr.setRequestHeader(name, hash[name]);
+        }
+    }
+
     this.sendRequest = function (url, method, data, callback) {
         var absoluteUrl = $("#server-input").val() + url;
         var type = method || "GET";
@@ -134,7 +168,7 @@ function getCookie(key) {
                 contentType: "application/json",
                 dataType: "json",
                 beforeSend: function (xhr) {
-                    addHeaders(xhr);
+                    setRequestHeaders(xhr);
                 },
                 success: buildSuccessHandler(type, absoluteUrl, callback),
                 error: buildErrorHandler(type, absoluteUrl, callback)
@@ -142,19 +176,6 @@ function getCookie(key) {
 
         });
     };
-
-    this.addHeaders = function (xhr) {
-        var headers = $("#headers-textarea").val().split(/\r\n/g);
-        for (var i = 0; i < headers.length; i++) {
-            var tokens = headers[i].split(/:/);
-            if (tokens && tokens.length > 1) {
-                var name = tokens[0].trim();
-                var value = tokens[1].trim();
-                console.log(`Setting header ${name}: ${value}`);
-                xhr.setRequestHeader(name, value);
-            }
-        }
-    }
 
 
     this.simplify = function (data) {
@@ -236,20 +257,23 @@ function getCookie(key) {
     };
 
 
-
-    this.hyperlink = function (text) {
+    function hyperlink(text) {
         var html = text.replace(/"href": "__LINK__([^<].*)"/g, '"href": "<a href="#$1" class="api-link">$1</a>"');
         html = html.replace(/^Location: (.*)$/gm, "Location: <a href=\"#$1\" class=\"api-link\">$1</a>");
         return html;
     };
 
-    this.authorize = function (xhr, username, password) {
-        var base64EncodedCredentials = btoa(username + ":" + password);
-        if (username && password) xhr.setRequestHeader("Authorization", "Basic " + base64EncodedCredentials);
-
+    function encodeCredentials(username, password) {
+        return (btoa(username + ":" + password));
     }
 
-    this.go = function (url) {
+    //this.authorize = function (xhr, username, password) {
+    //    var encoded = basic(username, password);
+    //    if (username && password) xhr.setRequestHeader("Authorization", "Basic " + encoded);
+
+    //}
+
+    function go(url) {
         if (typeof url === "string") {
             $("#endpoint-input").val(url);
         } else {
@@ -276,13 +300,26 @@ function getCookie(key) {
         return false;
     }
 
-    $(function () {
-        $("#server-input").change(function () { setCookie("explorer_server", this.value); });
-        $("#headers-textarea").change(function () { setCookie("explorer_headers", this.value); });
-        $("#explorer-form").submit(function () {
-            return (go());
-        });
+    function setAuthorizationHeader() {
+        var username = $("#username-input").val();
+        var password = $("#password-input").val();
+        console.log(username);
+        console.log(password);
+        var credentials = encodeCredentials(username, password);
+        setHeader("Authorization", "Basic " + credentials);
+    }
 
+    function saveValueInCookie() {
+        setCookie(this.name, this.value);
+    }
+
+    function readValueFromCookie() {
+        $(this).val(getCookie(this.name) || this.defaultValue);
+    }
+
+    $(function () {
+        $("#explorer-fieldset input").change(saveValueInCookie);
+        $("#explorer-form").submit(go);
         $("#json-data").on("click",
             "a.action-button",
             function () {
@@ -304,10 +341,10 @@ function getCookie(key) {
 
         $(document).on("submit", "form.api-form", handleForm);
 
-        var apiServer = getCookie("explorer_server") || "http://localhost:5555";
-        var headers = getCookie("explorer_headers") || "";
-        $("#server-input").val(apiServer);
-        $("#headers-textarea").val(headers);
+        $("#explorer-fieldset input[type=text]").each(readValueFromCookie);
+        $("#explorer-fieldset textarea").each(readValueFromCookie);
+
+        $("#authenticate-button").click(setAuthorizationHeader);
 
         $("#reset-button").click(function () {
             $("#json-data").html("Ready.");
@@ -317,6 +354,7 @@ function getCookie(key) {
         $(window).on("hashchange", function () {
             go(location.hash.substring(1));
         });
+
         go(location.hash.substring(1) || "/");
     });
 })();

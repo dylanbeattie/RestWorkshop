@@ -5,9 +5,11 @@ using System.Net.Http;
 using System.Web.Http;
 using Herobook.Data;
 using Herobook.Data.Entities;
-using Herobook.Helpers;
+using Herobook.Filters;
+using Herobook.Hypermedia;
 
 namespace Herobook.Controllers.Api {
+    [WorkshopBasicAuthentication(Password = "workshop")]
     public class ProfilesController : ApiController {
         private readonly IDatabase db;
 
@@ -59,6 +61,7 @@ namespace Herobook.Controllers.Api {
             return Created(Url.Content($"~/api/profiles/{profile.Username}"), profile.ToResource());
         }
 
+        [Authorize]
         [Route("api/profiles/{username}")]
         [HttpPut]
         public object Put(string username, [FromBody] Profile profile) {
@@ -66,6 +69,7 @@ namespace Herobook.Controllers.Api {
             return result.ToResource();
         }
 
+        [Authorize]
         [Route("api/profiles/{username}")]
         [HttpDelete]
         public void Delete(string username) {

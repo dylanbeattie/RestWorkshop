@@ -6,11 +6,18 @@ using System.Web.Routing;
 
 namespace Herobook {
     public class Global : HttpApplication {
+
+        private void Application_AuthenticateRequest(object sender, EventArgs e) {
+
+        }
+
         private void Application_Start(object sender, EventArgs e) {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+
     }
 }

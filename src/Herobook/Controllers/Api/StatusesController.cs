@@ -3,11 +3,11 @@ using System.Linq;
 using System.Web.Http;
 using Herobook.Data;
 using Herobook.Data.Entities;
-using Herobook.Helpers;
+using Herobook.Hypermedia;
 
 namespace Herobook.Controllers.Api {
     public class StatusesController {
-        private DemoDatabase db;
+        private readonly DemoDatabase db;
 
         public StatusesController() {
             this.db = new DemoDatabase();

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Http.Routing;
 
-namespace Herobook.Helpers.Routing {
+namespace Herobook.Routing {
     // Code from http://massivescale.com/web-api-routing-by-content-type/
     public class ContentTypeRoute : RouteFactoryAttribute {
         public ContentTypeRoute(string template, string contentType)
