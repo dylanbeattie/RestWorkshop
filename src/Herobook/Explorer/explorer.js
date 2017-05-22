@@ -78,7 +78,6 @@ function getCookie(key) {
 
                 for (var key in actions) {
                     if (!actions.hasOwnProperty(key)) continue;
-                    console.log(key);
                     var action = actions[key];
 
                     var form = buildActionForm(key, action, resourceAsSimpleJson);
@@ -163,9 +162,28 @@ function getCookie(key) {
                     var action = data[key][subkey];
                     var uniqueId = prefix + "-" + subkey;
                     hash[uniqueId] = clone(action);
-                    hash[uniqueId].template = /PUT/i.test(action.method)
-                        ? JSON.stringify(simplify(data), null, 2)
-                        : "{ }";
+                    if (action.schema && action.schema.href) {
+                        var target = hash[uniqueId];
+                        console.log(action);
+                        $.ajax({
+                            // headers: { Accept: $("#api-version-select").val() },
+                            url: action.schema.href,
+                            type: "GET",
+                            contentType: "application/json",
+                            dataType: "json",
+                            success: function (hash, uniqueId) {
+                                return function (schemaData, status, jqXhr) {
+                                    console.log(schemaData);
+                                    console.log(uniqueId);
+                                    hash[uniqueId].template = schemaData;
+                                }
+                            }(hash, uniqueId)
+                        });
+                    } else {
+                        hash[uniqueId].template = /PUT/i.test(action.method)
+                            ? JSON.stringify(simplify(data), null, 2)
+                            : "{ }";
+                    }
                     data[key][uniqueId] = action;
                     delete data[key][subkey];
                 }
@@ -210,7 +228,6 @@ function getCookie(key) {
         var textarea = $form.find("textarea")[0];
         var data = null;
         if (textarea) {
-            console.log($(textarea).val());
             var json = $form.find("textarea").val();
             data = json ? JSON.stringify(JSON.parse(json)) : null;
         }

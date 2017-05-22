@@ -134,6 +134,30 @@
     <Content Include="Explorer\explorer.css" />
     <Content Include="Explorer\explorer.html" />
     <Content Include="Explorer\explorer.js" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\AUTHORS.txt" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\external\jquery\jquery.js" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_444444_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_555555_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_777620_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_777777_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.js" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.min.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.min.js" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.structure.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.structure.min.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.theme.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\jquery-ui.theme.min.css" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\LICENSE.txt" />
+    <None Include="Explorer\jQuery\jquery-3.1.1.intellisense.js" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.js" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.min.js" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.slim.js" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.slim.min.js" />
+    <Content Include="Explorer\jQuery\jquery-ui-1.12.1.js" />
+    <Content Include="Explorer\jQuery\jquery-ui-1.12.1.min.js" />
     <Content Include="Explorer\spinner.gif" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -168,6 +192,9 @@
     <Content Include="App_Data\profiles.json" />
     <Content Include="Schemas\profile.json" />
     <Content Include="App_Data\statuses.json" />
+    <Content Include="Explorer\jQueryUI\themes\explorer\package.json" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.min.map" />
+    <Content Include="Explorer\jQuery\jquery-3.1.1.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

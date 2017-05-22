@@ -25,7 +25,8 @@ namespace Herobook.Controllers.Api {
                     name = "Create a new profile",
                     href = Request.RequestUri.AbsolutePath,
                     method = "POST",
-                    type = "application/json"
+                    type = "application/json",
+                    schema = new { href = "/schemas/profile.json" }
                 }
             };
             var result = new {
@@ -54,7 +55,6 @@ namespace Herobook.Controllers.Api {
         public object GetProfileStatuses(string username) {
             return db.LoadStatuses(username).Select(s => s.ToResource());
         }
-
 
         [Route("api/profiles/{username}/statuses")]
         [HttpPost]
